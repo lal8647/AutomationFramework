@@ -1,7 +1,20 @@
 package com.QA.hubspot.testlayer;
 
-import com.QA.hubspot.BaseLayer.BasePage;
 
-public class HomePageTest extends BasePage{
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
+import com.QA.hubspot.BaseLayer.BaseTest;
+
+public class HomePageTest extends BaseTest{
+
+	@BeforeClass
+	public void homePageSetup() {
+		homePage= loginPage.doLogin(prop.getProperty("username"), prop.getProperty("password"));
+	}
+	
+	@Test
+	public void homePageTitleTest() {
+		String title= basePage.getHomePageTitle();
+	}
 }
